@@ -1,22 +1,19 @@
-let cajaId = 1;
+let movementsId = 1;
 
+class Movement{
+    constructor(thirdPartyName, amount, cuotes) {
+        this.id = movementsId;
+        movementsId++;
 
-class Caja{
-    /**
-     * @param {str}moneda
-     * @param {int} saldo
-     * @param {int} limiteDescubierto 
-     * @param {int} montoDescubierto
-     */
-    constructor(moneda,saldo, limiteDescubierto, montoDescubierto){
-        this.id = cajaId;
-        cajaId++;
-        this.moneda = moneda
-        this.saldo = saldo
-        this.limiteDescubierto = limiteDescubierto
-        this.montoDescubierto = montoDescubierto
-        this.tarjets = [tarjetaId]
-        this.historial = []
+        this.date = new Date();
+        this.thirdPartyName = thirdPartyName;
+        this.amount = amount;
+        if(cuotes >= 1)
+            this.cuotes = cuotes;
     }
 }
 
+//Caso gasto de débito
+new Movement("COTO", 1000);
+//Caso gasto de crédito
+new Movement("CompraGamer", 200000, 3);
