@@ -25,6 +25,18 @@ class DebitCard {
     }
 }
 
+clients[0].savingsBanks[0].debitCards.push(new DebitCard("MasterCard", new Date("2023-10-26"), 432, "Juani Teruya"));
+clients[0].savingsBanks[1].debitCards.push(new DebitCard("Visa", new Date("2024-12-26"), 227, "Juani Teruya"));
+clients[1].savingsBanks[0].debitCards.push(new DebitCard("MasterCard", new Date("2023-10-26"), 432, "Lucas Simonetti"));
+clients[1].savingsBanks[1].debitCards.push(new DebitCard("Visa", new Date("2024-12-26"), 227, "Lucas Simonetti"));
+clients[2].savingsBanks[0].debitCards.push(new DebitCard("MasterCard", new Date("2023-10-26"), 432, "Pedro Gomez"));
+clients[2].savingsBanks[1].debitCards.push(new DebitCard("Visa", new Date("2024-12-26"), 227, "Pedro Gomez"));
+clients[3].savingsBanks[0].debitCards.push(new DebitCard("MasterCard", new Date("2023-10-26"), 432, "Ana Diaz"));
+clients[3].savingsBanks[1].debitCards.push(new DebitCard("Visa", new Date("2024-12-26"), 227, "Ana Diaz"));
+clients[4].savingsBanks[0].debitCards.push(new DebitCard("MasterCard", new Date("2023-10-26"), 432, "Carlos Ruiz"));
+clients[4].savingsBanks[1].debitCards.push(new DebitCard("Visa", new Date("2024-12-26"), 227, "Carlos Ruiz"));
+
+
 let creditCardIds = 1;
 
 class CreditCard {
@@ -50,7 +62,7 @@ class CreditCard {
 
         this.balance = 0;
         //Esto no es la realidad, es por simplificar
-        //Si el cliente usa el pago mínimo o paga menos del total
+        //Si el clientse usa el pago mínimo o paga menos del total
         //Vamos a modificar este valor
         //Si solo pagaron totales = balance * interes (1) = balance
         //Si hicieron algún pago menor = balance * interes (1,algo)
@@ -64,3 +76,15 @@ class CreditCard {
         this.expiresBalanceDate = expiresBalanceDate;
     }
 }
+
+
+clients[0].creditCards.push(new CreditCard("MasterCard",new Date ("2023-10-26"),301,"Juani Teruya"))
+clients[0].creditCards.push(new CreditCard("Visa",new Date ("2024-12-26"),665,"Juani Teruya"))
+clients[1].creditCards.push(new CreditCard("MasterCard", new Date("2023-10-26"), 301, "Lucas Simonetti"));
+clients[1].creditCards.push(new CreditCard("Visa", new Date("2024-12-26"), 665, "Lucas Simonetti"));
+clients[2].creditCards.push(new CreditCard("MasterCard", new Date("2023-10-26"), 301, "Pedro Gomez"));
+clients[2].creditCards.push(new CreditCard("Visa", new Date("2024-12-26"), 665, "Pedro Gomez"));
+clients[3].creditCards.push(new CreditCard("MasterCard", new Date("2023-10-26"), 301, "Ana Diaz"));
+clients[3].creditCards.push(new CreditCard("Visa", new Date("2024-12-26"), 665, "Ana Diaz"));
+clients[4].creditCards.push(new CreditCard("MasterCard", new Date("2023-10-26"), 301, "Carlos Ruiz"));
+clients[4].creditCards.push(new CreditCard("Visa", new Date("2024-12-26"), 665, "Carlos Ruiz"));
