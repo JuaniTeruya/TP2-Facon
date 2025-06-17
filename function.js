@@ -31,8 +31,7 @@ function findTarjetaDebitoCliente(idCliente) {
 }
 
 function findTarjetaDebito(idTarjeta) {
-
-    for (let i = 0; clients.length; i++) {
+    for (let i = 0; i<clients.length; i++) {
         for (let j = 0; j < clients[i].savingsBanks.length; j++) {
             for (let x = 0; x < clients[i].savingsBanks[j].debitCards.length; x++) {
                 if (clients[i].savingsBanks[j].debitCards[x].id == idTarjeta) {
@@ -41,10 +40,11 @@ function findTarjetaDebito(idTarjeta) {
             }
         }
     }
+    return -1
 }
 
 
-function findTarjetaCreditoCliinte(idCliente) {
+function findTarjetaCreditoClinte(idCliente) {
     let i = findClient(idCliente)
     let tarjetasCredito = []
     if (i != -1) {
@@ -53,15 +53,54 @@ function findTarjetaCreditoCliinte(idCliente) {
         }
         return  tarjetasCredito
     }
+    return -1
 }
 
 function findTarjetaCredito(idTarjeta) {
-
-    for (let i = 0; clients.length; i++) {
+    for (let i = 0; i < clients.length; i++) {
         for (let j = 0; j < clients[i].creditCards.length; j++) {
-                if (clients[i].creditCards[j].id == idTarjeta) {
-                    return clients[i].creditCards[j]
+            if (clients[i].creditCards[j].id == idTarjeta) {
+                return clients[i].creditCards[j];
+            }
+        }
+    }
+    return -1;
+}
+
+
+
+function findMovementsSavingBanks(idCaja) {
+    for (let i = 0; i < clients.length; i++) {
+        for (let j = 0; j < clients[i].savingsBanks.length; j++) {
+            if (clients[i].savingsBanks[j].id == idCaja) {
+                return clients[i].savingsBanks[j].movements;
+            }
+        }
+    }
+    return -1;
+}
+
+
+function findMovementsCreditCards(idCreditCard) {
+    for (let i = 0; i < clients.length; i++) {
+        for (let j = 0; j < clients[i].creditCards.length; j++) {
+            if (clients[i].creditCards[j].id == idCreditCard) {
+                return clients[i].creditCards[j].consumptions;
+            }
+        }
+    }
+    return -1;
+}
+
+function findMovementsTarjetaDebito(idTarjeta) {
+    for (let i = 0; i<clients.length; i++) {
+        for (let j = 0; j < clients[i].savingsBanks.length; j++) {
+            for (let x = 0; x < clients[i].savingsBanks[j].debitCards.length; x++) {
+                if (clients[i].savingsBanks[j].debitCards[x].id == idTarjeta) {
+                    return clients[i].savingsBanks[j].debitCards[x].consumptions
                 }
             }
         }
     }
+    return -1
+}
