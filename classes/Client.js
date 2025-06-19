@@ -13,6 +13,18 @@ class Client{
         //Otra opción es crear la primer caja de ahorro acá directamente...
         //this.savingsBanks = [new SavingsBanks("ARS", 50000, "FIRMA.TIPO.ALIAS")];
     }
+
+    compraVentaUsd(caja1,caja2,monto){
+        if (caja1.currency="ARS"){
+            if(caja1.balance>monto){
+                caja1.balance -=  monto
+                caja2.balance = caja2.balance + (monto / 1170)
+                return true
+            } else {
+                return false
+            }
+        }
+    }
 }
 
 let clients=[]

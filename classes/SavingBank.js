@@ -12,7 +12,7 @@ class SavingsBank {
         this.balance = 0;
         if (currency == "ARS") {
             this.limit = limit;
-            this.overdraft = 0;
+            this.overdraft = 4;
         }
         this.debitCards = [];
         this.movements = [];
@@ -26,6 +26,7 @@ class SavingsBank {
         if (this.currency == "USD") {
             if (monto <= this.balance) {
                 this.balance -= monto
+                return true
             } else {
                 return false
             }
@@ -33,14 +34,38 @@ class SavingsBank {
             if (monto <= this.balance + this.limit) {
                 if (monto <= this.balance) {
                     this.balance -= monto
+                    return true
                 } else {
-                    monto = -this.balance
+                    monto = monto - this.balance
                     if (this.limit >= monto) {
                         this.overdraft = monto
-                    }else{
+                        this.balance = 0
+                        return true
+                    } else {
                         return false
                     }
                 }
+            } else { return false }
+        }
+    }
+
+    ingresarDinero(monto) {
+        if (this.currency == "USD") {
+            this.balance += monto
+            return this.balance
+        } else {
+            if (this.overdraft > 0) {
+                if (monto>this.overdraft) {
+                    monto = monto - this.overdraft
+                    this.balance += monto
+                    return this.balance
+                } else{
+                    this.overdraft -= monto
+                    return this.balance
+                }
+            } else {
+                this.balance += monto
+                return this.balance
             }
         }
     }
