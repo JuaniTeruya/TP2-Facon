@@ -23,6 +23,17 @@ class DebitCard {
 
         this.consumptions = [];
     }
+
+    registrarMovimiento(thirdPartyName, amount) {
+        let currentDate = new Date()
+        if (currentDate > this.expireDate) {
+            console.log("La tarjeta de débito está vencida.");
+            return false;
+        }
+        let movement = new Movement(thirdPartyName, amount);
+        this.consumptions.push(movement);
+        return true;
+    }
 }
 
 clients[0].savingsBanks[0].debitCards.push(new DebitCard("MasterCard", new Date("2023-10-26"), 432, "Juani Teruya"));

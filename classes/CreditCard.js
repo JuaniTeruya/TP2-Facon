@@ -38,6 +38,19 @@ class CreditCard {
         //Cuando tenes que pagar.
         this.expiresBalanceDate = expiresBalanceDate;
     }
+
+    registrarMovimiento(thirdPartyName,amount) {
+        let currentDate = new Date()
+        if (currentDate > this.expireDate) {
+            console.log("La tarjeta de crédito está vencida.");
+            return false;
+        }
+        this.balance += amount;
+        let movement = new Movement(thirdPartyName, amount, cuotes);
+        this.consumptions.push(movement);
+
+        return true;
+    }
 }
 
 

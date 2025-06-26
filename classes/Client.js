@@ -1,4 +1,6 @@
 let clientsId = 1;
+const Dolar_Compra=1150
+const Dolar_Venta=1200
 
 class Client{
     constructor(dni, password, name, lastName) {
@@ -15,15 +17,19 @@ class Client{
     }
 
     compraVentaUsd(caja1,caja2,monto){
-        if (caja1.currency="ARS"){
-            if(caja1.balance>monto){
-                caja1.balance -=  monto
-                caja2.balance = caja2.balance + (monto / 1170)
-                return true
-            } else {
-                return false
+        if (caja1.currency=="ARS"){
+            if(caja1.extraerDinero(monto)){
+                caja2.ingresarDinero(monto/Dolar_Venta)
+                console.log(caja1)
+                return caja2.balance
             }
-        }
+        }else{
+            if(caja1.extraerDinero(monto)){
+                caja2.ingresarDinero(monto*Dolar_Compra)
+                console.log(caja1)
+                return caja2.balance
+            }
+        }return false
     }
 }
 

@@ -9,10 +9,10 @@ class SavingsBank {
         this.id = savingsBanksId;
         savingsBanksId++;
         this.currency = currency;
-        this.balance = 0;
+        this.balance = 11000;
         if (currency == "ARS") {
             this.limit = limit;
-            this.overdraft = 4;
+            this.overdraft = 0;
         }
         this.debitCards = [];
         this.movements = [];
@@ -25,7 +25,7 @@ class SavingsBank {
     extraerDinero(monto) {
         if (this.currency == "USD") {
             if (monto <= this.balance) {
-                this.balance -= monto
+                this.balance = this.balance-monto
                 return true
             } else {
                 return false
@@ -51,7 +51,7 @@ class SavingsBank {
 
     ingresarDinero(monto) {
         if (this.currency == "USD") {
-            this.balance += monto
+            this.balance = this.balance + monto
             return this.balance
         } else {
             if (this.overdraft > 0) {
@@ -69,6 +69,14 @@ class SavingsBank {
             }
         }
     }
+
+    movimientoSavings(thirdPartyName, amount, cuotes){
+        let movement = new Movement(thirdPartyName, amount, cuotes);
+        this.movements.push(movement);
+        this.extraerDinero(amount)
+        return true; 
+    }
+
 }
 
 clients[0].savingsBanks.push(new SavingsBank("ARS", "JuaniTeruya", 10000))
