@@ -31,7 +31,7 @@ function findTarjetaDebitoCliente(idCliente) {
 }
 
 function findTarjetaDebito(idTarjeta) {
-    for (let i = 0; i<clients.length; i++) {
+    for (let i = 0; i < clients.length; i++) {
         for (let j = 0; j < clients[i].savingsBanks.length; j++) {
             for (let x = 0; x < clients[i].savingsBanks[j].debitCards.length; x++) {
                 if (clients[i].savingsBanks[j].debitCards[x].id == idTarjeta) {
@@ -51,7 +51,7 @@ function findTarjetaCreditoClinte(idCliente) {
         for (let j = 0; j < clients[i].creditCards.length; j++) {
             tarjetasCredito.push(clients[i].creditCards[j])
         }
-        return  tarjetasCredito
+        return tarjetasCredito
     }
     return -1
 }
@@ -93,7 +93,7 @@ function findMovementsCreditCards(idCreditCard) {
 }
 
 function findMovementsTarjetaDebito(idTarjeta) {
-    for (let i = 0; i<clients.length; i++) {
+    for (let i = 0; i < clients.length; i++) {
         for (let j = 0; j < clients[i].savingsBanks.length; j++) {
             for (let x = 0; x < clients[i].savingsBanks[j].debitCards.length; x++) {
                 if (clients[i].savingsBanks[j].debitCards[x].id == idTarjeta) {
@@ -103,4 +103,22 @@ function findMovementsTarjetaDebito(idTarjeta) {
         }
     }
     return -1
+}
+function encontrarCaja(idCaja) {
+    for (let i = 0; i < clients.length; i++) {
+        for (let j = 0; j < clients[i].savingsBanks.length; j++) {
+            if (clients[i].savingsBanks[j].id == idCaja) {
+                return clients[i].savingsBanks[j]
+            }
+        }
+    }
+}
+function transferenciaUsuarios(idCaja, idCaja2, monto) {
+    if (encontrarCaja(idCaja).currency==encontrarCaja(idCaja2).currency) {
+        encontrarCaja(idCaja).extraerDinero(monto)
+        encontrarCaja(idCaja2).ingresarDinero(monto)
+        return true
+    }else{
+        return false
+    }
 }

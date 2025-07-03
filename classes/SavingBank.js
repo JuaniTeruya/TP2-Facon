@@ -70,8 +70,8 @@ class SavingsBank {
         }
     }
 
-    movimientoSavings(thirdPartyName, amount, cuotes){
-        let movement = new Movement(thirdPartyName, amount, cuotes);
+    movimientoSavings(thirdPartyName, amount){
+        let movement = new Movement(thirdPartyName, amount);
         this.movements.push(movement);
         this.extraerDinero(amount)
         return true; 

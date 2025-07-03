@@ -39,7 +39,7 @@ class CreditCard {
         this.expiresBalanceDate = expiresBalanceDate;
     }
 
-    registrarMovimiento(thirdPartyName,amount) {
+    registrarMovimiento(thirdPartyName,amount,cuotes) {
         let currentDate = new Date()
         if (currentDate > this.expireDate) {
             console.log("La tarjeta de crédito está vencida.");
@@ -50,6 +50,18 @@ class CreditCard {
         this.consumptions.push(movement);
 
         return true;
+    }
+
+    registrarPago(monto) {
+        if(monto==this.balance){
+            this.balance=this.balance - monto
+            return 1
+        }else if(monto>=this.balance*0.1){
+            this.balance=this.balance - monto
+            return 0
+        }else{
+            return -1
+        }
     }
 }
 
