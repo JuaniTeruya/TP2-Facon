@@ -1,3 +1,5 @@
+idUsuario = 0
+
 function findClient(id) {
     for (let i = 0; i < clients.length; i++) {
         if (clients[i].id == id)
@@ -121,4 +123,53 @@ function transferenciaUsuarios(idCaja, idCaja2, monto) {
     }else{
         return false
     }
+}
+
+function revisarIngreso() {
+    for (let i = 0; i < clients.length; i++) {
+        if (ui.getDniLog() == parseInt(clients[i].dni) && ui.getPasswordLog() == clients[i].password) {
+            idUsuario = clients[i].id
+            document.getElementById("nombreUsuarioLogeado").innerText = clients[i].name;
+            return true;
+        }
+    }
+    return false;
+}
+
+function chequeoIngreso(){
+    if(revisarIngreso()){
+        ui.showModal("Exito","Te has logeado correctamente")
+        document.getElementsByClassName("navbar-toggler")[0].hidden = false;
+        document.getElementsByClassName("col-md-6")[0].hidden = true;
+    }else{
+        ui.showModal("Error","Creedenciales incorrectas")
+    }
+}
+
+function revisarRegistro(){
+    for(let i = 0; i < clients.length; i++){
+        if(clients[i].dni==ui.getDniReg()|| clients[i].correo==ui.getEmailReg()){
+            return false
+        }
+    }
+    if(ui.getDniReg().length<7){
+        return false
+    }else{
+        return true
+    }
+}
+
+function chequeoRegistro(){
+    if(revisarRegistro()){
+        clients.push(new Client(parseInt(ui.getDniReg()), ui.getPasswordReg(), ui.getNombreReg(), ui.getApellidoReg(), ui.getEmailReg()));
+        ui.showModal("Exito","cliente creado correctamente")
+    }else{
+        ui.showModal("Error","No se ha podido crear la cuenta")
+    }
+}
+
+function logout(){
+    document.getElementsByClassName("navbar-toggler")[0].hidden = true;
+    document.getElementsByClassName("col-md-6")[0].hidden = false;
+    idUsuario=0
 }

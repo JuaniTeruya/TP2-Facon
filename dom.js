@@ -11,7 +11,7 @@ class UserInterface {
         return document.getElementById("registerEmail").value;
     }
 
-    
+   
     getNombreReg() {
         return document.getElementById("registerName").value;
     }
@@ -20,13 +20,24 @@ class UserInterface {
         return document.getElementById("registerLastName").value;
     }
 
-    getDniLog() {
+    getDniReg() {
         return document.getElementById("registerDni").value;
     }
 
-    getPasswordLog() {
+    getPasswordReg() {
         return document.getElementById("registerPassword").value;
     }
     
+    showModal(title, body) {
+        document.getElementById("modalTitle").textContent = title;
+        document.getElementById("modalBody").textContent = body;
+
+        const modal = new bootstrap.Modal('#modal', {
+            keyboard: true,
+            focus: true
+        });
+
+        modal.show();
+    }
 }
 const ui = new UserInterface();
