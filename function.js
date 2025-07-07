@@ -1,4 +1,4 @@
-idUsuario = 0
+posicionUsuario = 0
 
 function findClient(id) {
     for (let i = 0; i < clients.length; i++) {
@@ -128,7 +128,7 @@ function transferenciaUsuarios(idCaja, idCaja2, monto) {
 function revisarIngreso() {
     for (let i = 0; i < clients.length; i++) {
         if (ui.getDniLog() == parseInt(clients[i].dni) && ui.getPasswordLog() == clients[i].password) {
-            idUsuario = clients[i].id
+            posicionUsuario = i
             document.getElementById("nombreUsuarioLogeado").innerText = clients[i].name;
             return true;
         }
@@ -141,6 +141,9 @@ function chequeoIngreso(){
         ui.showModal("Exito","Te has logeado correctamente")
         document.getElementsByClassName("navbar-toggler")[0].hidden = false;
         document.getElementsByClassName("col-md-6")[0].hidden = true;
+        mostrarSavings()
+        mostrarSelectDebito()
+
     }else{
         ui.showModal("Error","Creedenciales incorrectas")
     }
@@ -172,4 +175,22 @@ function logout(){
     document.getElementsByClassName("navbar-toggler")[0].hidden = true;
     document.getElementsByClassName("col-md-6")[0].hidden = false;
     idUsuario=0
+}
+
+function mostrarSavings(){
+    for(let i=0;i<clients[posicionUsuario].savingsBanks.length;i++){
+            if(clients[posicionUsuario].savingsBanks[i].currency=="ARS"){
+                ui.mostrarAccountsPesos(clients[posicionUsuario].savingsBanks[i].currency,clients[posicionUsuario].savingsBanks[i].balance,clients[posicionUsuario].savingsBanks[i].limit,clients[posicionUsuario].savingsBanks[i].overdraft,clients[posicionUsuario].savingsBanks[i].alias,clients[posicionUsuario].savingsBanks[i].cbu)
+            }else{
+                ui.mostrarAccountsDolares(clients[posicionUsuario].savingsBanks[i].currency,clients[posicionUsuario].savingsBanks[i].balance,clients[posicionUsuario].savingsBanks[i].alias,clients[posicionUsuario].savingsBanks[i].cbu)
+            }
+        }
+}
+
+function mostrarSelectDebito(){
+    for(let i=0;i<clients[posicionUsuario].savingsBanks.length;i++){
+        for(let j=0;j<clients[posicionUsuario].savingsBanks[i].debitCards.length;j++){
+            ui.selectTarjetasDebito(clients[posicionUsuario].savingsBanks[i].debitCards[j].id,clients[posicionUsuario].savingsBanks[i].debitCards[j].securityCode,clients[posicionUsuario].savingsBanks[i].debitCards[j].displayedName)
+        }
+    }
 }
