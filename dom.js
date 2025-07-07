@@ -40,6 +40,10 @@ class UserInterface {
         modal.show();
     }
 
+/*==========================================
+LUQUI A PARTIR DE ACA DEJAS DE ENTENDER
+==========================================*/
+
     mostrarAccountsPesos(currency, balance, limit, overdraft, alias, cbu) {
         document.getElementsByClassName("row")[1].innerHTML += `
         <div class="col-md-6 col-lg-4 mb-4">
@@ -88,6 +92,55 @@ class UserInterface {
             <option value=${id}>${numero}-${nombre}</option>
         `;
         document.getElementById("debitCards").hidden = false;
+    }
+
+    selectCuentaTransferencias(id,alias){
+        document.getElementById("transferOrigin").innerHTML += `
+            <option value=${id}>${alias}</option>
+        `;
+        document.getElementById("transfers").hidden = false;
+    }
+
+    selectCuentaTransferencias2(id,alias){
+        document.getElementById("transferDestinysSelect").innerHTML += `
+            <option value=${id}>${alias}</option>
+        `;
+        document.getElementById("transfers").hidden = false;
+    }
+
+    selectCuentaPesosDolares(id,alias){
+        document.getElementById("pesosAccount").innerHTML += `
+            <option value=${id}>${alias}</option>
+        `;
+        document.getElementById("dollar").hidden = false;
+    }
+
+    selectCuentaPesosDolares2(id,alias){
+        document.getElementById("dollarsAccount").innerHTML += `
+            <option value=${id}>${alias}</option>
+        `;
+        document.getElementById("dollar").hidden = false;
+    }
+
+    selectTarjetasCredito(id,numero,nombre){
+        document.getElementById("creditCardSelect").innerHTML += `
+            <option value=${id}>${numero}-${nombre}</option>
+        `;
+        document.getElementById("creditCards").hidden = false;
+    }
+
+    selectTarjetas(id,numero,nombre,tipo){
+        document.getElementById("paymentMethodSelect").innerHTML += `
+            <option value=${id}>${numero}-${nombre}-${tipo}</option>
+        `;
+        document.getElementById("payments").hidden = false;
+    }
+
+    selectInversiones(alias,id){
+        document.getElementById("investmentAccountSelect").innerHTML += `
+            <option value=${id}>${alias}</option>
+        `;
+        document.getElementById("investments").hidden = false;
     }
 }
 const ui = new UserInterface();

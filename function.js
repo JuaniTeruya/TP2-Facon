@@ -125,6 +125,10 @@ function transferenciaUsuarios(idCaja, idCaja2, monto) {
     }
 }
 
+/*==========================================
+ LUQUI A PARTIR DE ACA DEJAS DE ENTENDER
+==========================================*/
+
 function revisarIngreso() {
     for (let i = 0; i < clients.length; i++) {
         if (ui.getDniLog() == parseInt(clients[i].dni) && ui.getPasswordLog() == clients[i].password) {
@@ -143,7 +147,11 @@ function chequeoIngreso(){
         document.getElementsByClassName("col-md-6")[0].hidden = true;
         mostrarSavings()
         mostrarSelectDebito()
-
+        mostrarCuentaTransferencias()
+        mostrarCuentaPesosDolares()
+        mostrarSelectCredito()
+        mostrarTodasTarjetas()
+        mostrarSavingsInversiones()
     }else{
         ui.showModal("Error","Creedenciales incorrectas")
     }
@@ -192,5 +200,52 @@ function mostrarSelectDebito(){
         for(let j=0;j<clients[posicionUsuario].savingsBanks[i].debitCards.length;j++){
             ui.selectTarjetasDebito(clients[posicionUsuario].savingsBanks[i].debitCards[j].id,clients[posicionUsuario].savingsBanks[i].debitCards[j].securityCode,clients[posicionUsuario].savingsBanks[i].debitCards[j].displayedName)
         }
+    }
+}
+
+function mostrarCuentaTransferencias(){
+    for(let i=0;i<clients.length;i++){
+        if(i==posicionUsuario){
+            for (let j = 0; j < clients[i].savingsBanks.length;j++) {
+                ui.selectCuentaTransferencias(clients[i].savingsBanks[j].id,clients[i].savingsBanks[j].alias)
+            }
+        }else{
+           for (let j = 0; j < clients[i].savingsBanks.length;j++) {
+                ui.selectCuentaTransferencias2(clients[i].savingsBanks[j].id,clients[i].savingsBanks[j].alias)
+            } 
+        }
+    }
+}
+
+function mostrarCuentaPesosDolares(){
+    for (let i = 0; i < clients[i].savingsBanks.length;i++) {
+        if (clients[posicionUsuario].savingsBanks[i].currency == "ARS") {
+            ui.selectCuentaPesosDolares(clients[posicionUsuario].savingsBanks[i].id,clients[posicionUsuario].savingsBanks[i].alias)
+        }else{
+            ui.selectCuentaPesosDolares2(clients[posicionUsuario].savingsBanks[i].id,clients[posicionUsuario].savingsBanks[i].alias)
+        }
+    }
+}
+
+function mostrarSelectCredito(){
+    for(let i=0;i<clients[posicionUsuario].creditCards.length;i++){
+        ui.selectTarjetasCredito(clients[posicionUsuario].creditCards[i].id,clients[posicionUsuario].creditCards[i].securityCode,clients[posicionUsuario].creditCards[i].displayedName)
+    }
+}
+
+function mostrarTodasTarjetas(){
+    for(let i=0;i<clients[posicionUsuario].savingsBanks.length;i++){
+        for(let j=0;j<clients[posicionUsuario].savingsBanks[i].debitCards.length;j++){
+            ui.selectTarjetas(clients[posicionUsuario].savingsBanks[i].debitCards[j].id,clients[posicionUsuario].savingsBanks[i].debitCards[j].securityCode,clients[posicionUsuario].savingsBanks[i].debitCards[j].displayedName,"Debito")
+        }
+    }
+    for(let i=0;i<clients[posicionUsuario].creditCards.length;i++){
+        ui.selectTarjetas(clients[posicionUsuario].creditCards[i].id,clients[posicionUsuario].creditCards[i].securityCode,clients[posicionUsuario].creditCards[i].displayedName,"Credito")
+    }
+}
+
+function mostrarSavingsInversiones(){
+    for(let i=0;i<clients[posicionUsuario].savingsBanks.length;i++){
+        ui.selectInversiones(clients[posicionUsuario].savingsBanks[i].alias,clients[posicionUsuario].savingsBanks[i].id)
     }
 }
