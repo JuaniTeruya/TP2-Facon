@@ -1,4 +1,4 @@
-posicionUsuario = 0
+let posicionUsuario = -1
 
 function findClient(id) {
     for (let i = 0; i < clients.length; i++) {
@@ -143,8 +143,6 @@ function revisarIngreso() {
 function chequeoIngreso(){
     if(revisarIngreso()){
         ui.showModal("Exito","Te has logeado correctamente")
-        document.getElementsByClassName("navbar-toggler")[0].hidden = false;
-        document.getElementsByClassName("col-md-6")[0].hidden = true;
         mostrarSavings()
         mostrarSelectDebito()
         mostrarCuentaTransferencias()
@@ -152,6 +150,8 @@ function chequeoIngreso(){
         mostrarSelectCredito()
         mostrarTodasTarjetas()
         mostrarSavingsInversiones()
+        ui.ocultarLogeo()
+        ui.mostrarBanco()
     }else{
         ui.showModal("Error","Creedenciales incorrectas")
     }
@@ -179,10 +179,9 @@ function chequeoRegistro(){
     }
 }
 
-function logout(){
-    document.getElementsByClassName("navbar-toggler")[0].hidden = true;
-    document.getElementsByClassName("col-md-6")[0].hidden = false;
-    idUsuario=0
+function logOut(){
+    ui.logOut()
+    posicionUsuario=-1
 }
 
 function mostrarSavings(){

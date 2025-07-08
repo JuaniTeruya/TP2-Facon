@@ -12,14 +12,14 @@
 <body>
 
 
-    <div>
+    <div id="hamburguesa">
         <nav class="navbar navbar-dark bg-dark sticky-top">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">TP2 - CarraBank - Home Banking - Alumnos: Teruya y Simonetti</a>
 
                 <!-- Botón menú hamburguesa -->
-                <button hidden class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu"
-                    aria-controls="offcanvasMenu">
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasMenu" aria-controls="offcanvasMenu" style="display: none;">
                     <span class="navbar-toggler-icon"></span>
                 </button>
             </div>
@@ -36,7 +36,8 @@
             <div class="offcanvas-body">
                 <div class="d-flex justify-content-between align-items-center mt-3">
                     <span id="usuario-logueado">Hola, <span id="nombreUsuarioLogeado"></span></span>
-                    <button class="btn btn-outline-light btn-sm" id="logout" onclick="logout()">Cerrar sesión</button>
+                    <button type="button" class="btn btn-outline-light btn-sm" id="logout" onclick="logOut()">Cerrar
+                        sesión</button>
                 </div>
                 <hr class="text-white">
                 <ul class="nav flex-column">
@@ -68,7 +69,7 @@
 
     </div>
 
-    <div>
+    <div id="logeo2">
         <section class="container py-4">
             <div class="row justify-content-center">
                 <div class="col-md-6">
@@ -96,7 +97,8 @@
                                         placeholder="Contraseña" required>
                                     <label for="loginPassword">Contraseña</label>
                                 </div>
-                                <button type="button" class="btn btn-primary w-100" onclick="chequeoIngreso()">Ingresar</button>
+                                <button type="button" class="btn btn-primary w-100"
+                                    onclick="chequeoIngreso()">Ingresar</button>
                             </form>
                         </div>
 
@@ -114,7 +116,8 @@
                                     <label for="registerLastName">Apellido</label>
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <input type="number" class="form-control" id="registerDni" placeholder="DNI" required>
+                                    <input type="number" class="form-control" id="registerDni" placeholder="DNI"
+                                        required>
                                     <label for="registerDni">DNI</label>
                                 </div>
                                 <div class="form-floating mb-3">
@@ -127,7 +130,8 @@
                                         placeholder="Contraseña" required>
                                     <label for="registerPassword">Contraseña</label>
                                 </div>
-                                <button type="button" class="btn btn-success w-100" onclick="chequeoRegistro()">Crear cuenta</button>
+                                <button type="button" class="btn btn-success w-100" onclick="chequeoRegistro()">Crear
+                                    cuenta</button>
                             </form>
                         </div>
 
@@ -137,14 +141,14 @@
         </section>
     </div>
 
-    <div>
-        <section id="accounts" class="border rounded shadow-sm p-4 container my-5" hidden>
+    <div id="banco" style="display: none;">
+        <section id="accounts" class="border rounded shadow-sm p-4 container my-5">
             <h2 class="mb-4">Mis Cuentas</h2>
             <div class="row">
             </div>
         </section>
 
-        <section id="debitCards" class="border rounded shadow-sm p-4 container my-5" hidden>
+        <section id="debitCards" class="border rounded shadow-sm p-4 container my-5">
 
             <h2>Tarjetas de Débito</h2>
 
@@ -189,7 +193,7 @@
 
         </section>
 
-        <section id="transfers" class="border rounded shadow-sm p-4 container my-5" hidden>
+        <section id="transfers" class="border rounded shadow-sm p-4 container my-5">
             <h2 class="mb-4">Transferencias</h2>
 
             <form>
@@ -225,7 +229,7 @@
             </form>
         </section>
 
-        <section id="dollar" class="border rounded shadow-sm p-4 container my-5" hidden>
+        <section id="dollar" class="border rounded shadow-sm p-4 container my-5">
             <h2 class="mb-4">Compra / Venta de Dólares</h2>
 
             <div class="d-flex justify-content-between gap-3 mb-4 flex-wrap">
@@ -286,7 +290,7 @@
         </section>
 
 
-        <section id="creditCards" class="border rounded shadow-sm p-4 container my-5" hidden>
+        <section id="creditCards" class="border rounded shadow-sm p-4 container my-5">
 
             <h2>Tarjetas de Crédito</h2>
 
@@ -351,7 +355,7 @@
 
         </section>
 
-        <section id="payments" class="container border rounded shadow p-4 my-4" hidden>
+        <section id="payments" class="container border rounded shadow p-4 my-4">
             <h2>Cargar gasto</h2>
 
             <!-- Selección de medio de pago -->
@@ -394,7 +398,7 @@
         </section>
 
 
-        <section id="investments" class="container border rounded shadow p-4 my-4" hidden>
+        <section id="investments" class="container border rounded shadow p-4 my-4">
             <h2>Inversiones</h2>
 
             <!-- Selección de cuenta -->
@@ -484,7 +488,7 @@
     <script src="classes/CreditCard.js"></script>
     <script src="classes/Movement.js"></script>
     <script src="function.js"></script>
-    
+
 
 </body>
 

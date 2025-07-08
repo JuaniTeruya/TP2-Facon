@@ -63,7 +63,6 @@ LUQUI A PARTIR DE ACA DEJAS DE ENTENDER
                     </div>
                 </div>
         `;
-        document.getElementById("accounts").hidden = false;
     }
 
 
@@ -84,63 +83,76 @@ LUQUI A PARTIR DE ACA DEJAS DE ENTENDER
                     </div>
                 </div>
         `;
-        document.getElementById("accounts").hidden = false;
     }
 
     selectTarjetasDebito(id,numero,nombre){
         document.getElementById("debitCardAccountSelect").innerHTML += `
             <option value=${id}>${numero}-${nombre}</option>
         `;
-        document.getElementById("debitCards").hidden = false;
     }
 
     selectCuentaTransferencias(id,alias){
         document.getElementById("transferOrigin").innerHTML += `
             <option value=${id}>${alias}</option>
         `;
-        document.getElementById("transfers").hidden = false;
     }
 
     selectCuentaTransferencias2(id,alias){
         document.getElementById("transferDestinysSelect").innerHTML += `
             <option value=${id}>${alias}</option>
         `;
-        document.getElementById("transfers").hidden = false;
     }
 
     selectCuentaPesosDolares(id,alias){
         document.getElementById("pesosAccount").innerHTML += `
             <option value=${id}>${alias}</option>
         `;
-        document.getElementById("dollar").hidden = false;
     }
 
     selectCuentaPesosDolares2(id,alias){
         document.getElementById("dollarsAccount").innerHTML += `
             <option value=${id}>${alias}</option>
         `;
-        document.getElementById("dollar").hidden = false;
     }
 
     selectTarjetasCredito(id,numero,nombre){
         document.getElementById("creditCardSelect").innerHTML += `
             <option value=${id}>${numero}-${nombre}</option>
         `;
-        document.getElementById("creditCards").hidden = false;
     }
 
     selectTarjetas(id,numero,nombre,tipo){
         document.getElementById("paymentMethodSelect").innerHTML += `
             <option value=${id}>${numero}-${nombre}-${tipo}</option>
         `;
-        document.getElementById("payments").hidden = false;
+    }
+
+    borrarTodo() {
+        let selects = document.getElementsByTagName("select");
+        for(let i = 0; i < selects.length; i++) {
+            selects[i].innerHTML = "";
+        }
     }
 
     selectInversiones(alias,id){
         document.getElementById("investmentAccountSelect").innerHTML += `
             <option value=${id}>${alias}</option>
         `;
-        document.getElementById("investments").hidden = false;
+    }
+
+    logOut(){
+        document.getElementsByClassName("navbar-toggler")[0].style.display = "none";
+        document.getElementById("logeo2").style.display = "";
+        document.getElementById("banco").style.display = "none";
+    }
+
+    ocultarLogeo(){
+        document.getElementsByClassName("navbar-toggler")[0].style.display = "";
+        document.getElementById("logeo2").style.display = "none";
+    }
+
+    mostrarBanco(){
+        document.getElementById("banco").style.display = "";
     }
 }
 const ui = new UserInterface();
